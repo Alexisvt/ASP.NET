@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Chapter2.Models;
 
 namespace Chapter2.Controllers
 {
@@ -16,9 +17,23 @@ namespace Chapter2.Controllers
             return View();
         }
 
-        public ViewResult RsvForm()
+        [HttpGet]
+        public ViewResult RsvpForm()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ViewResult RsvpForm(GuestResponse guestResponse)
+        {
+            if (ModelState.IsValid)
+            {
+                return View("Thanks", guestResponse);
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
