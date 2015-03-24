@@ -9,19 +9,41 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ThanksStyles.css" rel="stylesheet" />
     <title>Thanks</title>
 </head>
 <body>
-    <div>
+    @{
+        try
+        {
+            WebMail.SmtpServer = "smtp.gmail.com";
+            WebMail.SmtpPort = 587;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "user@gmail.com";
+            WebMail.Password = "password";
+            WebMail.From = "rsvps@example.com";
+
+            WebMail.Send("alexisvt@gmail.com", "RSVP Notification", Model.Name + " is " + ((Model.WillAttend ?? false) ? "" : "not") + "attending");
+        }
+        catch (Exception)
+        {
+            @:<b>Sorry - we couldn't send the email to confirm your RSVP.</b>
+        }
+    }
+    <div class="text-center">
         <h1>Thank you, @Model.Name!</h1>
-        @if (Model.WillAttend == true)
-        {
-            @:It's great that you'are coming. The drinks are already in the frigde!
+        <div class="lead">
+            @if (Model.WillAttend == true)
+            {
+                @:It's great that you'are coming. The drinks are already in the frigde!
         }
-        else
-        {
-            @:Sorry to hear that you can't make it, but thanks for letting us know.
+            else
+            {
+                @:Sorry to hear that you can't make it, but thanks for letting us know.
         }
+        </div>
     </div>
 </body>
 </html>
