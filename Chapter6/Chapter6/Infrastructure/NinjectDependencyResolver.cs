@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Chapter6.Models;
+using Ninject.Web.Common;
 
 namespace Chapter6.Infrastructure
 {
@@ -30,7 +31,9 @@ namespace Chapter6.Infrastructure
 
         private void AddBindings()
         {
-            kernel.Bind <IValueCalculator>().To<LinqValueCalculator>();
+            kernel.Bind<IValueCalculator>().To<LinqValueCalculator>().InRequestScope();
+            kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithConstructorArgument("discountParam",50M);
+            kernel.Bind<IDiscountHelper>().To<FlexibleDiscountHelper>().WhenInjectedInto<LinqValueCalculator>();
         }
     }
 }
