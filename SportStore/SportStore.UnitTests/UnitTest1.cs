@@ -32,7 +32,7 @@ namespace SportStore.UnitTests
             controller.PageSize = 3;
 
             //Act
-            ProductsListViewModel result = (ProductsListViewModel)controller.List(2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(null, 2).Model;
 
             //Assert
             Product[] prodArray = result.Products.ToArray();
@@ -86,7 +86,7 @@ namespace SportStore.UnitTests
             controller.PageSize = 3;
 
             // Act
-            ProductsListViewModel result = (ProductsListViewModel)controller.List(2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(null, 2).Model;
 
             // Assert
             PagingInfo pageInfo = result.PagingInfo;
@@ -94,6 +94,33 @@ namespace SportStore.UnitTests
             Assert.AreEqual(pageInfo.ItemsPerPage, 3);
             Assert.AreEqual(pageInfo.TotalItems, 5);
             Assert.AreEqual(pageInfo.TotalPages, 2);
+        }
+
+        [TestMethod]
+        public void Can_Filter_Products()
+        {
+            // Arrange
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]{
+                new Product {ProductID= 1, Category="Soccer", Name="P1"},
+                new Product {ProductID= 2, Category= "Soccer", Name="P2"},
+                new Product {ProductID= 3, Category= "Watersports", Name= "P3"},
+                new Product {ProductID= 4, Category= "Watersports", Name= "P4"}
+            });
+
+            // Arrange
+            ProductController controller = new ProductController(mock.Object);
+            controller.PageSize= 3;
+
+            //Act
+            //ProductsListViewModel result = (ProductsListViewModel)controller.List("Soccer", 1).Model;
+            Product[] prodArray = ((ProductsListViewModel)controller.List("Soccer", 1).Model).Products.ToArray();
+
+            //Assert
+            //Product[] prodArray= result.Products.ToArray();
+            Assert.AreEqual(prodArray.Length, 2);
+            Assert.AreEqual(prodArray[0].Name, "P1");
+            Assert.AreEqual(prodArray[1].Name, "P2");
         }
     }
 }
