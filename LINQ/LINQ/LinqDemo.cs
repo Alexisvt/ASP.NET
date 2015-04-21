@@ -10,15 +10,19 @@ namespace LINQ
     {
         static void Main(string[] args)
         {
-            string[] names = { "Alexis", "Melissa", "David", "Margoth" };
+            string[] names = { "Alexis", "Mel", "David", "Margoth" };
 
-            IEnumerable<string> filteredNames = names.Where(n => n.Length >= 4);
+            IEnumerable<string> filteredNames = 
+                names.Where(n => n.Length >= 4)
+                .OrderBy(n => n.Length)
+                .Select(n => n.ToUpper());
 
             foreach (string item in filteredNames)
             {
                 Console.WriteLine(item);
-                Console.ReadKey();
             }
+
+            Console.ReadLine();
         }
     }
 }
