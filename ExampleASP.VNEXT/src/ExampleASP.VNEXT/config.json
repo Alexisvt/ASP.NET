@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "ExampleASP.VNEXT"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-ExampleASP.VNEXT-cbf58a7b-957f-4364-93aa-c051eb52624d;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}
