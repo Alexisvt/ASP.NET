@@ -1,13 +1,21 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html ng-ap="diveLog">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <environment names="Development, Production">
+        <link rel="stylesheet" href="~/wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    </environment>
 </head>
 <body>
-    <div>
+    <div class="container-fluid">
         @RenderBody()
     </div>
+    <environment names="Development, Production">
+        @*<script src="~/wwwroot/lib/angular/angular.min.js"></script>*@
+        <script src="~/wwwroot/js/app.ts"></script>
+        <script src="~/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    </environment>
 </body>
 </html>
