@@ -1,18 +1,30 @@
 ﻿///<reference path="../typings/angularjs/angular.d.ts"/>
 
 module App {
-    
-    var a = new Classes.DiveGenerator();
-
-    a.dives.forEach(p => {
-        alert(p);
-    });
-
-    alert(a.funct("Alexis"));
+    import DiveGenerator = Classes.DiveGenerator;
 
     angular.module("diveLog", [])
-        .controller("diveLogCtrl", ($scope: any) => {
-            $scope.dives = new Classes.DiveGenerator().dives;
+        .controller("diveLogCtrl", ($scope: Interfaces.IScope) => {
+
+            let index: number = 0;
+            $scope.dives = [];
+
+            $scope.addDive = () => {
+                if ($scope.enableAdd()) {
+                    $scope.dives.push(DiveGenerator.dives[index++]);
+                }
+            };
+
+            $scope.clearDives = () => {
+                $scope.dives = [];
+                index = 0;
+            }
+
+            $scope.enableAdd = () => {
+                return index < DiveGenerator.dives.length;
+            };
+
+
         });
 }
 

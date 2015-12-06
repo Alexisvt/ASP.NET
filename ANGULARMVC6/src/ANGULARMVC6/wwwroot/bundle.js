@@ -3,16 +3,12 @@ var Classes;
 (function (Classes) {
     var DiveGenerator = (function () {
         function DiveGenerator() {
-            this.funct = function (dato) {
-                var message = "Hola " + dato;
-                return message;
-            };
-            this.dives = [
-                { site: "Abu Gotta Ramada", location: "Hurghada, Egypt", depth: 72, time: 54 },
-                { site: "Ponte Mahoon", location: "Maehbourg, Mauritius", depth: 54, time: 38 },
-                { site: "Molnar Cave", location: "Budapest, Hungary", depth: 98, time: 62 }
-            ];
         }
+        DiveGenerator.dives = [
+            { site: "Abu Gotta Ramada", location: "Hurghada, Egypt", depth: 72, time: 54 },
+            { site: "Ponte Mahoon", location: "Maehbourg, Mauritius", depth: 54, time: 38 },
+            { site: "Molnar Cave", location: "Budapest, Hungary", depth: 98, time: 62 }
+        ];
         return DiveGenerator;
     })();
     Classes.DiveGenerator = DiveGenerator;
@@ -20,14 +16,23 @@ var Classes;
 //# sourceMappingURL=classes.js.map
 var App;
 (function (App) {
-    var a = new Classes.DiveGenerator();
-    a.dives.forEach(function (p) {
-        alert(p);
-    });
-    alert(a.funct("Alexis"));
+    var DiveGenerator = Classes.DiveGenerator;
     angular.module("diveLog", [])
         .controller("diveLogCtrl", function ($scope) {
-        $scope.dives = new Classes.DiveGenerator().dives;
+        var index = 0;
+        $scope.dives = [];
+        $scope.addDive = function () {
+            if ($scope.enableAdd()) {
+                $scope.dives.push(DiveGenerator.dives[index++]);
+            }
+        };
+        $scope.clearDives = function () {
+            $scope.dives = [];
+            index = 0;
+        };
+        $scope.enableAdd = function () {
+            return index < DiveGenerator.dives.length;
+        };
     });
 })(App || (App = {}));
 //# sourceMappingURL=app.js.map

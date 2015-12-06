@@ -1,13 +1,22 @@
 var App;
 (function (App) {
-    var a = new Classes.DiveGenerator();
-    a.dives.forEach(function (p) {
-        alert(p);
-    });
-    alert(a.funct("Alexis"));
+    var DiveGenerator = Classes.DiveGenerator;
     angular.module("diveLog", [])
         .controller("diveLogCtrl", function ($scope) {
-        $scope.dives = new Classes.DiveGenerator().dives;
+        var index = 0;
+        $scope.dives = [];
+        $scope.addDive = function () {
+            if ($scope.enableAdd()) {
+                $scope.dives.push(DiveGenerator.dives[index++]);
+            }
+        };
+        $scope.clearDives = function () {
+            $scope.dives = [];
+            index = 0;
+        };
+        $scope.enableAdd = function () {
+            return index < DiveGenerator.dives.length;
+        };
     });
 })(App || (App = {}));
 //# sourceMappingURL=app.js.map

@@ -3,8 +3,26 @@
 }
 
 <h1>My lastest Dives (ng-controller)</h1>
-<div class="row" ng-controller="diveLogCtrl">
-    <div class="col-sm-4" ng-repeat="dive in dives">
+<div class="row">
+    <div class="col-sm-5">
+        <button class="btn btn-primary btn-lg"
+                ng-click="addDive()"
+                ng-disabled="!enableAdd()">
+            Add new Dive
+        </button>
+        <div class="btn btn-danger btn-lg"
+             ng-click="clearDives()">
+            Clear Dives
+        </div>
+    </div>
+    <div class="col-sm-4 col-sm-offset-3">
+        <input class="form-control input-lg"
+               placeholder="Search"
+               ng-model="searchKey"/>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4" ng-repeat="dive in dives | filter:searchKey">
         <h3>{{dive.site}}</h3>
         <h4>{{dive.location}}</h4>
         <h2>{{dive.depth}} feet | {{dive.time}} min</h2>
