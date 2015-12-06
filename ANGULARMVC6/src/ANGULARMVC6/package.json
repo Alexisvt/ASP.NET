@@ -1,0 +1,11 @@
+{
+	"version": "1.0.0",
+	"name": "ASP.NET",
+	"private": true,
+  "devDependencies": {
+    "gulp-util": "~3.0.7",
+    "gulp-concat": "~2.6.0",
+    "gulp-uglify": "~1.5.1",
+    "bower": "~1.6.8"
+  }
+}
