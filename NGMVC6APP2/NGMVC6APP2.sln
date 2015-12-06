@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{35017E3A-0E56-491D-B649-34814C1C16EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1A5577AC-207D-4085-B26E-E756D2F2FFC6}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NGMVC6APP2", "src\NGMVC6APP2\NGMVC6APP2.xproj", "{7E866E89-5289-49DB-BBCB-B88F9FC94350}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E866E89-5289-49DB-BBCB-B88F9FC94350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E866E89-5289-49DB-BBCB-B88F9FC94350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E866E89-5289-49DB-BBCB-B88F9FC94350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E866E89-5289-49DB-BBCB-B88F9FC94350}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7E866E89-5289-49DB-BBCB-B88F9FC94350} = {35017E3A-0E56-491D-B649-34814C1C16EE}
+	EndGlobalSection
+EndGlobal

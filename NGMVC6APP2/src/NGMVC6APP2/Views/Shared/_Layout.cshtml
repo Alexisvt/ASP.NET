@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html ng-app="maintenance">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <environment names="Development, Production">
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css"/>
+        <style>
+            .odd {
+                background-color: #dddddd;
+            }
+        </style>
+    </environment>
+</head>
+<body>
+<div>
+    <div class="container" ng-controller="siteEditCtrl">
+        @RenderBody()
+    </div>
+</div>
+<environment names="Development, Production">
+    <script src="lib/angular/angular.min.js" type="text/javascript"></script>
+    <script src="bundle.js" type="text/javascript"></script>
+</environment>
+</body>
+</html>
