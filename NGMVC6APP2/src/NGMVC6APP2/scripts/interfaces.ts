@@ -2,11 +2,11 @@
     
     export interface IScope {
         sites: string[];
+        siteBox: string;
         view: string;
         startAdd: () => void;
         cancel: () => void;
         add: () => void;
-        siteBox: string;
         startEdit: (index: number) => void;
         save: () => void;
     }

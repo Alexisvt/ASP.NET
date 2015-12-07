@@ -1,39 +1,51 @@
-//# sourceMappingURL=interfaces.js.map
+var Controllers;
+(function (Controllers) {
+    var SiteEditViewModel = (function () {
+        function SiteEditViewModel(otroScope) {
+            var _this = this;
+            this.setView = function (view) {
+                _this.view = view;
+            };
+            this.startAdd = function () {
+                _this.siteBox = "";
+                _this.setView("add");
+            };
+            this.sites = [
+                "Shaab El Erg",
+                "Abu Gotta Ramada",
+                "El Arouk",
+                "Small Giftun",
+                "Erg Somaya"];
+            this.selected = -1;
+            this.siteBox = "";
+            this.setView("list");
+        }
+        SiteEditViewModel.prototype.cancel = function () {
+            this.setView("list");
+        };
+        SiteEditViewModel.prototype.add = function () {
+            this.sites.push(this.siteBox);
+            this.setView("list");
+        };
+        SiteEditViewModel.prototype.startEdit = function (index) {
+            this.selected = index;
+            this.siteBox = this.sites[index];
+            this.setView("edit");
+        };
+        SiteEditViewModel.prototype.save = function () {
+            this.sites[this.selected] = this.siteBox;
+            this.setView("list");
+        };
+        SiteEditViewModel.$inject = ["$scope"];
+        return SiteEditViewModel;
+    })();
+    Controllers.SiteEditViewModel = SiteEditViewModel;
+})(Controllers || (Controllers = {}));
+//# sourceMappingURL=controllers.js.map
 var App;
 (function (App) {
     angular.module("maintenance", [])
         .controller("siteEditCtrl", function ($scope) {
-        $scope.sites = [
-            "Shaab El Erg",
-            "Abu Gotta Ramada",
-            "El Arouk",
-            "Small Giftun",
-            "Erg Somaya"];
-        var setView = function (view) {
-            $scope.view = view;
-        };
-        var selected = -1;
-        $scope.startEdit = function (index) {
-            selected = index;
-            $scope.siteBox = $scope.sites[index];
-            setView("edit");
-        };
-        $scope.save = function () {
-            $scope.sites[selected] = $scope.siteBox;
-            setView("list");
-        };
-        $scope.startAdd = function () {
-            $scope.siteBox = "";
-            setView("add");
-        };
-        $scope.cancel = function () {
-            setView("list");
-        };
-        $scope.add = function () {
-            $scope.sites.push($scope.siteBox);
-            setView("list");
-        };
-        setView("list");
     });
 })(App || (App = {}));
 //# sourceMappingURL=app.js.map
