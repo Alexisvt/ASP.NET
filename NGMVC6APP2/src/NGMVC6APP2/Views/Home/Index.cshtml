@@ -2,24 +2,24 @@
     ViewBag.Title = "Dive Sites Home";
 }
 <h1>Dive Sites Maintenance</h1>
-<div ng-show="view == 'list'">
+<div ng-show="vm.view == 'list'">
     <div class="row">
         <div class="col-sm-12">
             <button class="btn btn-primary btn-lg"
-                    ng-click="startAdd()">
+                    ng-click="vm.startAdd()">
                 Add new dive
             </button>
         </div>
     </div>
     <h2>List of Dive Sites</h2>
-    <div class="row" ng-repeat="site in sites" ng-class="{oddRow: $index % 2 == 0}">
+    <div class="row" ng-repeat="site in vm.sites" ng-class="{oddRow: $index % 2 == 0}">
         <div class="col-sm-8">
             <h4>{{$index + 1 }}: {{site}}</h4>
         </div>
         <div class="col-sm-4" style="margin-top: 5px;">
             <div class="pull-right">
                 <button class="btn btn-warning btn-sm"
-                        ng-click="startEdit($index)">
+                        ng-click="vm.startEdit($index)">
                     Edit
                 </button>
                 <button class="btn btn-danger btn-sm">Delete</button>
@@ -27,47 +27,47 @@
         </div>
     </div>
 </div>
-<div ng-show="view == 'add'">
+<div ng-show="vm.view == 'add'">
     <h3>Specify the name of the dive site:</h3>
     <div class="row">
         <div class="col-sm-6">
             <input class="form-control input-lg" type="text"
                    placeholder="site name"
-                   ng-model="siteBox"/>
+                   ng-model="vm.siteBox"/>
         </div>
     </div>
     <div class="row" style="margin-top: 12px;">
         <div class="col-sm-6">
             <button class="btn btn-success btn"
-                    ng-disabled="siteBox==''"
-                    ng-click="add()">
+                    ng-disabled="vm.siteBox == ''"
+                    ng-click="vm.add()">
                 Add
             </button>
             <button class="btn btn-warning btn"
-                    ng-click="cancel()">
+                    ng-click="vm.cancel()">
                 Cancel
             </button>
         </div>
     </div>
 </div>
-<div ng-show="view == 'edit'">
+<div ng-show="vm.view == 'edit'">
     <h3>Edit the name of the dive site:</h3>
     <div class="row">
         <div class="col-sm-6">
             <input class="form-control input-lg" type="text"
                    placeholder="site name"
-                   ng-model="siteBox" />
+                   ng-model="vm.siteBox" />
         </div>
     </div>
     <div class="row" style="margin-top: 12px;">
         <div class="col-sm-6">
             <button class="btn btn-success btn"
-                    ng-disabled="siteBox==''"
-                    ng-click="save()">
+                    ng-disabled="vm.siteBox==''"
+                    ng-click="vm.save()">
                 Save
             </button>
             <button class="btn btn-warning btn"
-                    ng-click="cancel()">
+                    ng-click="vm.cancel()">
                 Cancel
             </button>
         </div>

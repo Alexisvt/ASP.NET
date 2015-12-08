@@ -1,7 +1,6 @@
 var App;
 (function (App) {
     angular.module("maintenance", [])
-        .controller("siteEditCtrl", function ($scope) {
-    });
+        .controller("Controllers.SiteEditViewModel", Controllers.SiteEditViewModel);
 })(App || (App = {}));
 //# sourceMappingURL=app.js.map

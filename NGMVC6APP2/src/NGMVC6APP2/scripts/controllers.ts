@@ -1,6 +1,4 @@
-﻿///<reference path="../typings/angularjs/angular.d.ts"/>
-
-module Controllers {
+﻿module Controllers {
     
     export class SiteEditViewModel implements Interfaces.IScope{
 
@@ -9,9 +7,9 @@ module Controllers {
         siteBox: string;
         private selected: number;
 
-        static $inject = ["$scope"];
+        //static $inject = ["$scope"];
 
-        constructor( otroScope : angular.IScope) {
+        constructor() {
             //initialize state
             this.sites = [
                 "Shaab El Erg",

@@ -1,7 +1,7 @@
 var Controllers;
 (function (Controllers) {
     var SiteEditViewModel = (function () {
-        function SiteEditViewModel(otroScope) {
+        function SiteEditViewModel() {
             var _this = this;
             this.setView = function (view) {
                 _this.view = view;
@@ -36,7 +36,6 @@ var Controllers;
             this.sites[this.selected] = this.siteBox;
             this.setView("list");
         };
-        SiteEditViewModel.$inject = ["$scope"];
         return SiteEditViewModel;
     })();
     Controllers.SiteEditViewModel = SiteEditViewModel;
@@ -45,7 +44,6 @@ var Controllers;
 var App;
 (function (App) {
     angular.module("maintenance", [])
-        .controller("siteEditCtrl", function ($scope) {
-    });
+        .controller("Controllers.SiteEditViewModel", Controllers.SiteEditViewModel);
 })(App || (App = {}));
 //# sourceMappingURL=app.js.map
