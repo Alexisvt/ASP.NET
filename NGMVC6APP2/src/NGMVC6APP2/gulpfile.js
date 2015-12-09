@@ -11,7 +11,8 @@ gulp.task('default', function () {
 });
 
 gulp.task("concat", function () {
-    return gulp.src(["wwwroot/js/controllers.js", "wwwroot/js/app.js"])
+    //return gulp.src(["wwwroot/js/controllers.js", "wwwroot/js/app.js"])
+    return gulp.src(["wwwroot/js/app.js", "wwwroot/js/controllers.js"])
         .pipe(concat("bundle.js"))
     .pipe(gulp.dest("wwwroot/"));
 });

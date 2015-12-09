@@ -1,3 +1,8 @@
+(function () {
+    "use strict";
+    angular.module("maintenance", []);
+})();
+//# sourceMappingURL=app.js.map
 var Controllers;
 (function (Controllers) {
     var SiteEditViewModel = (function () {
@@ -9,6 +14,14 @@ var Controllers;
             this.startAdd = function () {
                 _this.siteBox = "";
                 _this.setView("add");
+            };
+            this.startRemove = function (index) {
+                _this.selected = index;
+                _this.setView("delete");
+            };
+            this.remove = function () {
+                _this.sites.splice(_this.selected, 1);
+                _this.setView("list");
             };
             this.sites = [
                 "Shaab El Erg",
@@ -36,14 +49,14 @@ var Controllers;
             this.sites[this.selected] = this.siteBox;
             this.setView("list");
         };
+        SiteEditViewModel.prototype.getSelected = function () {
+            return this.sites[this.selected];
+        };
         return SiteEditViewModel;
     })();
     Controllers.SiteEditViewModel = SiteEditViewModel;
+    angular
+        .module("maintenance")
+        .controller("Controllers.SiteEditViewModel", SiteEditViewModel);
 })(Controllers || (Controllers = {}));
 //# sourceMappingURL=controllers.js.map
-var App;
-(function (App) {
-    angular.module("maintenance", [])
-        .controller("Controllers.SiteEditViewModel", Controllers.SiteEditViewModel);
-})(App || (App = {}));
-//# sourceMappingURL=app.js.map

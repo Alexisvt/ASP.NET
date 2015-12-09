@@ -9,5 +9,8 @@
         add: () => void;
         startEdit: (index: number) => void;
         save: () => void;
+        startRemove: (index: number) => void;
+        getSelected: () => string;
+        remove: () => void;
     }
 }

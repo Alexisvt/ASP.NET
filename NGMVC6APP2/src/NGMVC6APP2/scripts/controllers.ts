@@ -1,6 +1,6 @@
 ﻿module Controllers {
     
-    export class SiteEditViewModel implements Interfaces.IScope{
+    class SiteEditViewModel implements Interfaces.IScope{
 
         sites: string[];
         view: string;
@@ -26,6 +26,7 @@
         private setView = (view: string) : void => {
             this.view = view;
         }
+
         startAdd = (): void => {
 
             this.siteBox = "";
@@ -51,6 +52,24 @@
             this.sites[this.selected] = this.siteBox;
             this.setView("list");
         }
+
+        startRemove = (index: number) : void => {
+            this.selected = index;
+            this.setView("delete");
+        }
+
+        getSelected(): string {
+            return this.sites[this.selected];
+        }
+
+        remove = () : void => {
+            this.sites.splice(this.selected, 1);
+            this.setView("list");
+        }
     }
+
+    angular
+        .module("maintenance")
+        .controller("Controllers.SiteEditViewModel", SiteEditViewModel);
 
 }

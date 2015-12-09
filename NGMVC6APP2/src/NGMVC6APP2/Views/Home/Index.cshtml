@@ -22,7 +22,8 @@
                         ng-click="vm.startEdit($index)">
                     Edit
                 </button>
-                <button class="btn btn-danger btn-sm">Delete</button>
+                <button class="btn btn-danger btn-sm"
+                        ng-click="vm.startRemove($index)">Delete</button>
             </div>
         </div>
     </div>
@@ -56,7 +57,7 @@
         <div class="col-sm-6">
             <input class="form-control input-lg" type="text"
                    placeholder="site name"
-                   ng-model="vm.siteBox" />
+                   ng-model="vm.siteBox"/>
         </div>
     </div>
     <div class="row" style="margin-top: 12px;">
@@ -69,6 +70,28 @@
             <button class="btn btn-warning btn"
                     ng-click="vm.cancel()">
                 Cancel
+            </button>
+        </div>
+    </div>
+</div>
+<div ng-show="vm.view == 'delete'">
+    <h3>Confirm delete</h3>
+    <div class="row">
+        <div class="col-sm-8">
+            <p>
+                Are you sure you want to delete dive site '{{vm.getSelected()}}'?
+            </p>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 12px;">
+        <div class="col-sm-6">
+            <button class="btn btn-success"
+                    ng-click="vm.cancel()">
+                No
+            </button>
+            <button class="btn btn-danger"
+                    ng-click="vm.remove()">
+                Yes
             </button>
         </div>
     </div>

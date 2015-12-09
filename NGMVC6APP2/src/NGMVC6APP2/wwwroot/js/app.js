@@ -1,6 +1,5 @@
-var App;
-(function (App) {
-    angular.module("maintenance", [])
-        .controller("Controllers.SiteEditViewModel", Controllers.SiteEditViewModel);
-})(App || (App = {}));
+(function () {
+    "use strict";
+    angular.module("maintenance", []);
+})();
 //# sourceMappingURL=app.js.map
