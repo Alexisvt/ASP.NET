@@ -11,7 +11,7 @@ gulp.task("default", function () {
 });
 
 gulp.task("concat", function() {
-    return gulp.src(["wwwroot/js/app.js", "wwwroot/js/controllers.js"])
+    return gulp.src("wwwroot/js/**/*.js")
         .pipe(concat("bundle.js"))
         .pipe(gulp.dest("wwwroot/"));
 })
