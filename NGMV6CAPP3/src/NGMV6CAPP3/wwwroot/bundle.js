@@ -3,6 +3,7 @@
 })();
 //# sourceMappingURL=app.js.map
 (function () {
+    "use strict";
     angular.module("maintenance")
         .config(config);
     config.$inject = ["$routeProvider"];
@@ -12,14 +13,13 @@
             templateUrl: "views/locations.html",
             controller: "app.Controllers.LocationCtrl",
             controllerAs: "vm"
-        });
-        $routeProvider
+        })
             .when("/sites", {
             templateUrl: "views/sites.html",
             controller: "app.Controllers.SitesCtrl",
             controllerAs: "vm"
-        });
-        $routeProvider.otherwise({
+        })
+            .otherwise({
             templateUrl: "views/main.html",
             controller: "app.Controllers.MainCtrl",
             controllerAs: "vm"
@@ -56,7 +56,6 @@ var app;
         var LocationCtrl = (function () {
             function LocationCtrl(currentSpot) {
                 this.currentSpot = currentSpot;
-                currentSpot.setCurrentSpot("Locations", "Manage the list of diving locations");
             }
             LocationCtrl.$inject = ["app.services.CurrentSpot"];
             return LocationCtrl;
@@ -74,7 +73,6 @@ var app;
         var MainCtrl = (function () {
             function MainCtrl(currentSpot) {
                 this.currentSpot = currentSpot;
-                currentSpot.setCurrentSpot("", "");
             }
             MainCtrl.$inject = ["app.services.CurrentSpot"];
             return MainCtrl;
@@ -92,7 +90,6 @@ var app;
         var SitesCtrl = (function () {
             function SitesCtrl(currentSpot) {
                 this.currentSpot = currentSpot;
-                currentSpot.setCurrentSpot("Sites", "Manage the list of dive sites");
             }
             SitesCtrl.$inject = ["app.services.CurrentSpot"];
             return SitesCtrl;
@@ -103,6 +100,21 @@ var app;
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 //# sourceMappingURL=SitesCtrl.js.map
+var app;
+(function (app) {
+    var Directives;
+    (function (Directives) {
+        ywActiveMenu.$inject = ["app.services.CurrentSpot"];
+        function ywActiveMenu(currentSpot) {
+            var directive = {};
+            return directive;
+        }
+        angular
+            .module("maintenance")
+            .directive("app.Directives.ywActiveMenu", ywActiveMenu);
+    })(Directives = app.Directives || (app.Directives = {}));
+})(app || (app = {}));
+//# sourceMappingURL=ywActiveMenu.js.map
 var app;
 (function (app) {
     var services;

@@ -7,7 +7,7 @@
         
         static $inject = ["app.services.CurrentSpot"];
         constructor(public currentSpot: services.ICurrentSpot) {
-            currentSpot.setCurrentSpot("Locations", "Manage the list of diving locations");
+            //currentSpot.setCurrentSpot("Locations", "Manage the list of diving locations");
         }
     }
 

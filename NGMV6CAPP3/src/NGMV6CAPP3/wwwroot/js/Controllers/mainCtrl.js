@@ -5,7 +5,6 @@ var app;
         var MainCtrl = (function () {
             function MainCtrl(currentSpot) {
                 this.currentSpot = currentSpot;
-                currentSpot.setCurrentSpot("", "");
             }
             MainCtrl.$inject = ["app.services.CurrentSpot"];
             return MainCtrl;

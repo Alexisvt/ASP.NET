@@ -5,7 +5,6 @@ var app;
         var LocationCtrl = (function () {
             function LocationCtrl(currentSpot) {
                 this.currentSpot = currentSpot;
-                currentSpot.setCurrentSpot("Locations", "Manage the list of diving locations");
             }
             LocationCtrl.$inject = ["app.services.CurrentSpot"];
             return LocationCtrl;
