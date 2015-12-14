@@ -100,20 +100,23 @@ var app;
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 //# sourceMappingURL=SitesCtrl.js.map
-var app;
-(function (app) {
-    var Directives;
-    (function (Directives) {
-        ywActiveMenu.$inject = ["app.services.CurrentSpot"];
-        function ywActiveMenu(currentSpot) {
-            var directive = {};
-            return directive;
-        }
-        angular
-            .module("maintenance")
-            .directive("app.Directives.ywActiveMenu", ywActiveMenu);
-    })(Directives = app.Directives || (app.Directives = {}));
-})(app || (app = {}));
+(function () {
+    "use strict";
+    ywActiveMenu.$inject = ["app.services.CurrentSpot"];
+    function ywActiveMenu(currentSpot) {
+        var directive = {};
+        directive.restrict = "A";
+        directive.link = function (scope, element, attributes) {
+            var activeMenuId = attributes["ywActiveMenu"];
+            var activeTitle = attributes["ywActiveTitle"];
+            currentSpot.setCurrentSpot(activeMenuId, activeTitle);
+        };
+        return directive;
+    }
+    angular
+        .module("maintenance")
+        .directive("ywActiveMenu", ywActiveMenu);
+})();
 //# sourceMappingURL=ywActiveMenu.js.map
 var app;
 (function (app) {
