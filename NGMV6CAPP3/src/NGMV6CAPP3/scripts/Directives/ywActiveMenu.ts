@@ -8,8 +8,8 @@
 
         directive.restrict = "A";
         directive.link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attributes: ng.IAttributes): void => {
-            var activeMenuId = attributes["ywActiveMenu"];
-            var activeTitle = attributes["ywActiveTitle"];
+            var activeMenuId:string = attributes["ywActiveMenu"];
+            var activeTitle:string = attributes["ywActiveTitle"];
             currentSpot.setCurrentSpot(activeMenuId, activeTitle);
         };
 
