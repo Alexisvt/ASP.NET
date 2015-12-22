@@ -25,7 +25,7 @@ var app;
         }
         angular
             .module("maintenance")
-            .factory("app.services.CurrentSpot", factory);
+            .service("app.services.CurrentSpot", CurrentSpot);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 //# sourceMappingURL=CurrentSpot.js.map

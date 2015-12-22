@@ -2,31 +2,6 @@
     angular.module("maintenance", ["ngRoute"]);
 })();
 //# sourceMappingURL=app.js.map
-(function () {
-    "use strict";
-    angular.module("maintenance")
-        .config(config);
-    config.$inject = ["$routeProvider"];
-    function config($routeProvider) {
-        $routeProvider
-            .when("/locations", {
-            templateUrl: "views/locations.html",
-            controller: "app.Controllers.LocationCtrl",
-            controllerAs: "vm"
-        })
-            .when("/sites", {
-            templateUrl: "views/sites.html",
-            controller: "app.Controllers.SitesCtrl",
-            controllerAs: "vm"
-        })
-            .otherwise({
-            templateUrl: "views/main.html",
-            controller: "app.Controllers.MainCtrl",
-            controllerAs: "vm"
-        });
-    }
-})();
-//# sourceMappingURL=config.js.map
 var app;
 (function (app) {
     var Controllers;
@@ -102,6 +77,31 @@ var app;
 //# sourceMappingURL=SitesCtrl.js.map
 (function () {
     "use strict";
+    angular.module("maintenance")
+        .config(config);
+    config.$inject = ["$routeProvider"];
+    function config($routeProvider) {
+        $routeProvider
+            .when("/locations", {
+            templateUrl: "views/locations.html",
+            controller: "app.Controllers.LocationCtrl",
+            controllerAs: "vm"
+        })
+            .when("/sites", {
+            templateUrl: "views/sites.html",
+            controller: "app.Controllers.SitesCtrl",
+            controllerAs: "vm"
+        })
+            .otherwise({
+            templateUrl: "views/main.html",
+            controller: "app.Controllers.MainCtrl",
+            controllerAs: "vm"
+        });
+    }
+})();
+//# sourceMappingURL=config.js.map
+(function () {
+    "use strict";
     ywActiveMenu.$inject = ["app.services.CurrentSpot"];
     function ywActiveMenu(currentSpot) {
         var directive = {};
@@ -118,6 +118,46 @@ var app;
         .directive("ywActiveMenu", ywActiveMenu);
 })();
 //# sourceMappingURL=ywActiveMenu.js.map
+var app;
+(function (app) {
+    var Directive;
+    (function (Directive) {
+        var ywMenuId = (function () {
+            function ywMenuId(currentSpot) {
+                this.currentSpot = currentSpot;
+                this.menuElements = [];
+            }
+            ywMenuId.prototype.setActive = function (element, menuId) {
+                if (this.currentSpot.getActiveMenu() == menuId) {
+                    element.addClass("active");
+                }
+                else {
+                    element.removeClass("active");
+                }
+            };
+            ywMenuId.prototype.watcherFn = function (watchScope) {
+                return watchScope.$eval("getActiveMenu()");
+            };
+            ywMenuId.prototype.watcherCallback = function (newValue, oldValue) {
+                for (var i = 0; i < this.menuElements.length; i++) {
+                    var menuElement = this.menuElements[i];
+                    this.setActive(menuElement.node, menuElement.id);
+                }
+            };
+            ywMenuId.prototype.link = function (scope, element, attributes) {
+                var menuId = attributes["ywMenuId"];
+                this.menuElements.push({ id: menuId, node: element });
+                scope.$watch(this.watcherFn, this.watcherCallback);
+            };
+            ywMenuId.$inject = ["app.services.CurrentSpot"];
+            return ywMenuId;
+        })();
+        angular
+            .module("maintenance")
+            .directive("ywMenuId", function () { return new ywMenuId(); });
+    })(Directive = app.Directive || (app.Directive = {}));
+})(app || (app = {}));
+//# sourceMappingURL=ywMenuId.js.map
 var app;
 (function (app) {
     var services;
@@ -145,7 +185,7 @@ var app;
         }
         angular
             .module("maintenance")
-            .factory("app.services.CurrentSpot", factory);
+            .service("app.services.CurrentSpot", CurrentSpot);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 //# sourceMappingURL=CurrentSpot.js.map
