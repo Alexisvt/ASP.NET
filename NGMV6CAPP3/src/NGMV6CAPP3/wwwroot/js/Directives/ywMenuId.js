@@ -37,7 +37,7 @@ var app;
                 };
             }
             ywMenuId.instance = function () {
-                return new ywMenuId;
+                return new ywMenuId();
             };
             ywMenuId.prototype.watcherFn = function (watchScope) {
                 return watchScope.$eval("vm.getActiveMenu()");

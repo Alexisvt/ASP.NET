@@ -33,8 +33,6 @@
 //        .directive("ywMenuId", ywMenuId);
 //})();
 
-
-
 namespace app.Directive {
 
     class ywMenuIdController {
@@ -70,7 +68,7 @@ namespace app.Directive {
         controller = ywMenuIdController;
 
         static instance(): ng.IDirective {
-            return new ywMenuId;
+            return new ywMenuId();
         }
 
         private watcherFn(watchScope: any): any {
