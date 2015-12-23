@@ -2,6 +2,31 @@
     angular.module("maintenance", ["ngRoute"]);
 })();
 //# sourceMappingURL=app.js.map
+(function () {
+    "use strict";
+    angular.module("maintenance")
+        .config(config);
+    config.$inject = ["$routeProvider"];
+    function config($routeProvider) {
+        $routeProvider
+            .when("/locations", {
+            templateUrl: "views/locations.html",
+            controller: "app.Controllers.LocationCtrl",
+            controllerAs: "vm"
+        })
+            .when("/sites", {
+            templateUrl: "views/sites.html",
+            controller: "app.Controllers.SitesCtrl",
+            controllerAs: "vm"
+        })
+            .otherwise({
+            templateUrl: "views/main.html",
+            controller: "app.Controllers.MainCtrl",
+            controllerAs: "vm"
+        });
+    }
+})();
+//# sourceMappingURL=config.js.map
 var app;
 (function (app) {
     var Controllers;
@@ -15,6 +40,9 @@ var app;
             };
             AdminCtrl.prototype.getTitle = function () {
                 return this.currentSpot.getTitle();
+            };
+            AdminCtrl.prototype.getActiveMenu = function () {
+                return this.currentSpot.getActiveMenu();
             };
             AdminCtrl.$inject = ["app.services.CurrentSpot"];
             return AdminCtrl;
@@ -75,86 +103,87 @@ var app;
     })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
 //# sourceMappingURL=SitesCtrl.js.map
-(function () {
-    "use strict";
-    angular.module("maintenance")
-        .config(config);
-    config.$inject = ["$routeProvider"];
-    function config($routeProvider) {
-        $routeProvider
-            .when("/locations", {
-            templateUrl: "views/locations.html",
-            controller: "app.Controllers.LocationCtrl",
-            controllerAs: "vm"
-        })
-            .when("/sites", {
-            templateUrl: "views/sites.html",
-            controller: "app.Controllers.SitesCtrl",
-            controllerAs: "vm"
-        })
-            .otherwise({
-            templateUrl: "views/main.html",
-            controller: "app.Controllers.MainCtrl",
-            controllerAs: "vm"
-        });
-    }
-})();
-//# sourceMappingURL=config.js.map
-(function () {
-    "use strict";
-    ywActiveMenu.$inject = ["app.services.CurrentSpot"];
-    function ywActiveMenu(currentSpot) {
-        var directive = {};
-        directive.restrict = "A";
-        directive.link = function (scope, element, attributes) {
-            var activeMenuId = attributes["ywActiveMenu"];
-            var activeTitle = attributes["ywActiveTitle"];
-            currentSpot.setCurrentSpot(activeMenuId, activeTitle);
-        };
-        return directive;
-    }
-    angular
-        .module("maintenance")
-        .directive("ywActiveMenu", ywActiveMenu);
-})();
+var app;
+(function (app) {
+    var Directive;
+    (function (Directive) {
+        var ywActiveMenuController = (function () {
+            function ywActiveMenuController(currentSpot) {
+                this.currentSpot = currentSpot;
+            }
+            ywActiveMenuController.$inject = ["app.services.CurrentSpot"];
+            return ywActiveMenuController;
+        })();
+        var ywActiveMenu = (function () {
+            function ywActiveMenu() {
+                this.restrict = "A";
+                this.controller = ywActiveMenuController;
+                this.link = function (scope, element, attributes, controller) {
+                    var activeMenuId = attributes["ywActiveMenu"];
+                    var activeTitle = attributes["ywActiveTitle"];
+                    controller.currentSpot.setCurrentSpot(activeMenuId, activeTitle);
+                };
+            }
+            ywActiveMenu.instance = function () {
+                return new ywActiveMenu;
+            };
+            return ywActiveMenu;
+        })();
+        angular
+            .module("maintenance")
+            .directive("ywActiveMenu", ywActiveMenu.instance);
+    })(Directive = app.Directive || (app.Directive = {}));
+})(app || (app = {}));
 //# sourceMappingURL=ywActiveMenu.js.map
 var app;
 (function (app) {
     var Directive;
     (function (Directive) {
-        var ywMenuId = (function () {
-            function ywMenuId(currentSpot) {
-                this.currentSpot = currentSpot;
+        var ywMenuIdController = (function () {
+            function ywMenuIdController(CurrentSpot) {
+                var _this = this;
+                this.CurrentSpot = CurrentSpot;
+                this.setActive = function (element, menuId) {
+                    if (_this.CurrentSpot.getActiveMenu() == menuId) {
+                        element.addClass("active");
+                    }
+                    else {
+                        element.removeClass("active");
+                    }
+                };
+                this.watcherCallback = function (newValue, oldValue) {
+                    for (var i = 0; i < _this.menuElements.length; i++) {
+                        var menuElement = _this.menuElements[i];
+                        _this.setActive(menuElement.node, menuElement.id);
+                    }
+                };
                 this.menuElements = [];
             }
-            ywMenuId.prototype.setActive = function (element, menuId) {
-                if (this.currentSpot.getActiveMenu() == menuId) {
-                    element.addClass("active");
-                }
-                else {
-                    element.removeClass("active");
-                }
+            ywMenuIdController.$inject = ["app.services.CurrentSpot"];
+            return ywMenuIdController;
+        })();
+        var ywMenuId = (function () {
+            function ywMenuId() {
+                var _this = this;
+                this.restrict = "A";
+                this.controller = ywMenuIdController;
+                this.link = function (scope, element, attributes, controller) {
+                    var menuId = attributes["ywMenuId"];
+                    controller.menuElements.push({ id: menuId, node: element });
+                    scope.$watch(_this.watcherFn, controller.watcherCallback);
+                };
+            }
+            ywMenuId.instance = function () {
+                return new ywMenuId;
             };
             ywMenuId.prototype.watcherFn = function (watchScope) {
-                return watchScope.$eval("getActiveMenu()");
+                return watchScope.$eval("vm.getActiveMenu()");
             };
-            ywMenuId.prototype.watcherCallback = function (newValue, oldValue) {
-                for (var i = 0; i < this.menuElements.length; i++) {
-                    var menuElement = this.menuElements[i];
-                    this.setActive(menuElement.node, menuElement.id);
-                }
-            };
-            ywMenuId.prototype.link = function (scope, element, attributes) {
-                var menuId = attributes["ywMenuId"];
-                this.menuElements.push({ id: menuId, node: element });
-                scope.$watch(this.watcherFn, this.watcherCallback);
-            };
-            ywMenuId.$inject = ["app.services.CurrentSpot"];
             return ywMenuId;
         })();
         angular
             .module("maintenance")
-            .directive("ywMenuId", function () { return new ywMenuId(); });
+            .directive("ywMenuId", ywMenuId.instance);
     })(Directive = app.Directive || (app.Directive = {}));
 })(app || (app = {}));
 //# sourceMappingURL=ywMenuId.js.map
@@ -185,7 +214,7 @@ var app;
         }
         angular
             .module("maintenance")
-            .service("app.services.CurrentSpot", CurrentSpot);
+            .factory("app.services.CurrentSpot", factory);
     })(services = app.services || (app.services = {}));
 })(app || (app = {}));
 //# sourceMappingURL=CurrentSpot.js.map

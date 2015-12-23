@@ -12,6 +12,9 @@ var app;
             AdminCtrl.prototype.getTitle = function () {
                 return this.currentSpot.getTitle();
             };
+            AdminCtrl.prototype.getActiveMenu = function () {
+                return this.currentSpot.getActiveMenu();
+            };
             AdminCtrl.$inject = ["app.services.CurrentSpot"];
             return AdminCtrl;
         })();

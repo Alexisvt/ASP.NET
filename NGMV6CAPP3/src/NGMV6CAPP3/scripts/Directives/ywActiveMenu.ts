@@ -1,22 +1,36 @@
-﻿((): void => {
-    "use strict";
+﻿namespace app.Directive {
 
-    ywActiveMenu.$inject = ["app.services.CurrentSpot"];
-    function ywActiveMenu(currentSpot: app.services.CurrentSpot): ng.IDirective {
+    class ywActiveMenuController {
 
-        var directive = <ng.IDirective>{};
+        static $inject = ["app.services.CurrentSpot"];
+        constructor(public currentSpot: services.CurrentSpot){}
+        
+    }
 
-        directive.restrict = "A";
-        directive.link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attributes: ng.IAttributes): void => {
-            var activeMenuId:string = attributes["ywActiveMenu"];
-            var activeTitle:string = attributes["ywActiveTitle"];
-            currentSpot.setCurrentSpot(activeMenuId, activeTitle);
-        };
+    class ywActiveMenu implements ng.IDirective{
 
-        return directive;
+        restrict = "A";
+        controller = ywActiveMenuController;
+
+        static instance(): ng.IDirective {
+            return new ywActiveMenu;
+        }
+
+        link = (scope: ng.IScope,
+            element: ng.IAugmentedJQuery,
+            attributes: ng.IAttributes,
+            controller: ywActiveMenuController): void => {
+
+            var activeMenuId: string = attributes["ywActiveMenu"];
+            var activeTitle: string = attributes["ywActiveTitle"];
+            controller.currentSpot.setCurrentSpot(activeMenuId, activeTitle);
+            
+        }
+        
+        
     }
 
     angular
         .module("maintenance")
-        .directive("ywActiveMenu", ywActiveMenu);
-})();
+        .directive("ywActiveMenu", ywActiveMenu.instance);
+}

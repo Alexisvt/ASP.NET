@@ -3,6 +3,7 @@
     interface IAdminCtrlScope {
         isActive(menuId:string): boolean;
         getTitle(): string;
+        getActiveMenu(): string;
     }
 
     class AdminCtrl implements IAdminCtrlScope{
@@ -18,6 +19,10 @@
 
         getTitle(): string {
             return this.currentSpot.getTitle();
+        }
+
+        getActiveMenu(): string {
+            return this.currentSpot.getActiveMenu();
         }
     }
 

@@ -1,96 +1,95 @@
-﻿//(():void => {
-//    "use strict";
+﻿//((): void => {
 
 //    ywMenuId.$inject = ["app.services.CurrentSpot"];
-//    function ywMenuId( currentSpot: app.services.CurrentSpot): ng.IDirective {
+//    function ywMenuId(currentSpot) {
+//        var menuElements = [];
 
-//        var menuElements: any[] = [];
-//        var directive = <ng.IDirective>{};
-
-//        function setActive(element: ng.IAugmentedJQuery, menuId: string): void {
+//        function setActive(element, menuId) {
 //            if (currentSpot.getActiveMenu() == menuId) {
-//                element.addClass("active");
+//                element.addClass('active');
 //            } else {
-//                element.removeClass("active");
-//            }    
+//                element.removeClass('active');
+//            }
 //        }
 
-//        directive.restrict = "A";
-//        directive.link = (scope: ng.IScope,
-//            element: ng.IAugmentedJQuery,
-//            attributes: ng.IAttributes): void => {
-
-
-//            var menuId = attributes["ywMenuId"];
+//        return function(scope, element, attrs) {
+//            var menuId = attrs["ywMenuId"];
 //            menuElements.push({ id: menuId, node: element });
 
-//            var watcherFn = (watchScope: any): any => {
+//            var watcherFn = function(watchScope) {
 //                return watchScope.$eval('getActiveMenu()');
-//            };
-
-//            scope.$watch(watcherFn, (newValue: any, oldValue: any):void => {
+//            }
+//            scope.$watch(watcherFn, function(newValue, oldValue) {
 //                for (var i = 0; i < menuElements.length; i++) {
 //                    var menuElement = menuElements[i];
 //                    setActive(menuElement.node, menuElement.id);
 //                }
 //            });
-
 //        }
-
-//        return directive;
 //    }
 
 //    angular
 //        .module("maintenance")
 //        .directive("ywMenuId", ywMenuId);
-//})()
+//})();
+
+
 
 namespace app.Directive {
 
-    interface IywMenuId extends ng.IDirective{
-    }
+    class ywMenuIdController {
 
-    class ywMenuId implements IywMenuId {
-
-        private  menuElements: any[];
+        public menuElements: any[];
 
         static $inject = ["app.services.CurrentSpot"];
-        constructor(public currentSpot?: services.CurrentSpot) {
+        constructor(private CurrentSpot: services.CurrentSpot) {
             this.menuElements = [];
         }
 
-        private setActive(element: ng.IAugmentedJQuery, menuId: string): void {
-            if (this.currentSpot.getActiveMenu() == menuId) {
+        public setActive = (element: ng.IAugmentedJQuery, menuId: string): void => {
+            if (this.CurrentSpot.getActiveMenu() == menuId) {
                 element.addClass("active");
             } else {
                 element.removeClass("active");
             }
         }
 
-        private watcherFn(watchScope: any): any {
-            return watchScope.$eval("getActiveMenu()");
-        }
-
-        private watcherCallback(newValue: string, oldValue: string): void {
+        public watcherCallback = (newValue: string, oldValue: string): void => {
             for (var i = 0; i < this.menuElements.length; i++) {
                 let menuElement = this.menuElements[i];
                 this.setActive(menuElement.node, menuElement.id);
             }
         }
+        
+    }
 
-        public link(scope: ng.IScope,
+    class ywMenuId implements ng.IDirective {
+
+        restrict = "A";
+
+        controller = ywMenuIdController;
+
+        static instance(): ng.IDirective {
+            return new ywMenuId;
+        }
+
+        private watcherFn(watchScope: any): any {
+            return watchScope.$eval("vm.getActiveMenu()");
+        }
+
+        public link = (scope: ng.IScope,
             element: ng.IAugmentedJQuery,
-            attributes: ng.IAttributes): void {
+            attributes: ng.IAttributes, controller: ywMenuIdController): void => {
 
             let menuId = attributes["ywMenuId"];
-            this.menuElements.push({ id: menuId, node: element });
+            controller.menuElements.push({ id: menuId, node: element });
 
-            scope.$watch(this.watcherFn, this.watcherCallback);
+            scope.$watch(this.watcherFn, controller.watcherCallback);
         }
 
     }
 
     angular
         .module("maintenance")
-        .directive("ywMenuId", () => new ywMenuId());
+        .directive("ywMenuId", ywMenuId.instance);
 }

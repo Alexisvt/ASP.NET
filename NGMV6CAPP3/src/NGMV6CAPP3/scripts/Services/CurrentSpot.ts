@@ -39,7 +39,7 @@
     // class is more like the type of data that the angular service is expecting
     angular
         .module("maintenance")
-        //.factory("app.services.CurrentSpot", factory);
-        .service("app.services.CurrentSpot", CurrentSpot);
+        .factory("app.services.CurrentSpot", factory);
+        //.service("app.services.CurrentSpot", CurrentSpot);
 
 }
