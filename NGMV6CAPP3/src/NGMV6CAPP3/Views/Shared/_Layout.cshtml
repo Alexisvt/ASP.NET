@@ -4,14 +4,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <environment name="Development, Production">
+    <environment cntrlName="Development, Production">
         <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
         <link href="css/site.css" rel="stylesheet"/>
     </environment>
 </head>
 <body ng-controller="app.Controllers.AdminCtrl as vm">
     @RenderBody()
-    <environment name="Development, Production">
+    <environment cntrlName="Development, Production">
         <script src="lib/angular/angular.min.js"></script>
         <script src="lib/angular-route/angular-route.min.js"></script>
         <script src="bundle.js"></script>

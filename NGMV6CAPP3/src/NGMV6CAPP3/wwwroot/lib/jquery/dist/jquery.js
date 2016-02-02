@@ -778,7 +778,7 @@ function Sizzle( selector, context, results, seed ) {
 					// nodes that are no longer in the document (jQuery #6963)
 					if ( elem && elem.parentNode ) {
 						// Handle the case where IE, Opera, and Webkit return items
-						// by name instead of ID
+						// by cntrlName instead of ID
 						if ( elem.id === m ) {
 							results.push( elem );
 							return results;
@@ -858,7 +858,7 @@ function Sizzle( selector, context, results, seed ) {
 /**
  * Create key-value caches of limited size
  * @returns {Function(string, Object)} Returns the Object data after storing it on itself with
- *	property name the (space-suffixed) string and (if the cache is larger than Expr.cacheLength)
+ *	property cntrlName the (space-suffixed) string and (if the cache is larger than Expr.cacheLength)
  *	deleting the oldest entry
  */
 function createCache() {
@@ -1076,7 +1076,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	support.getElementsByClassName = rnative.test( doc.getElementsByClassName );
 
 	// Support: IE<10
-	// Check if getElementById returns elements by name
+	// Check if getElementById returns elements by cntrlName
 	// The broken getElementById methods don't pick up programatically-set names,
 	// so use a roundabout getElementsByName test
 	support.getById = assert(function( div ) {
@@ -1217,15 +1217,15 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 		assert(function( div ) {
 			// Support: Windows 8 Native Apps
-			// The type and name attributes are restricted during .innerHTML assignment
+			// The type and cntrlName attributes are restricted during .innerHTML assignment
 			var input = doc.createElement("input");
 			input.setAttribute( "type", "hidden" );
-			div.appendChild( input ).setAttribute( "name", "D" );
+			div.appendChild( input ).setAttribute( "cntrlName", "D" );
 
 			// Support: IE8
-			// Enforce case-sensitivity of name attribute
-			if ( div.querySelectorAll("[name=d]").length ) {
-				rbuggyQSA.push( "name" + whitespace + "*[*^$|!~]?=" );
+			// Enforce case-sensitivity of cntrlName attribute
+			if ( div.querySelectorAll("[cntrlName=d]").length ) {
+				rbuggyQSA.push( "cntrlName" + whitespace + "*[*^$|!~]?=" );
 			}
 
 			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
@@ -1843,7 +1843,7 @@ Expr = Sizzle.selectors = {
 		// being equal to the identifier C,
 		// or beginning with the identifier C immediately followed by "-".
 		// The matching of C against the element's language value is performed case-insensitively.
-		// The identifier C does not have to be a valid language name."
+		// The identifier C does not have to be a valid language cntrlName."
 		// http://www.w3.org/TR/selectors/#lang-pseudo
 		"lang": markFunction( function( lang ) {
 			// lang value must be a valid identifier
@@ -3666,7 +3666,7 @@ Data.prototype = {
 		} else {
 			// Support array or space separated string of keys
 			if ( jQuery.isArray( key ) ) {
-				// If "name" is an array of keys...
+				// If "cntrlName" is an array of keys...
 				// When data is initially created, via ("key", "val") signature,
 				// keys will be converted to camelCase.
 				// Since there is no way to tell _how_ a key was added, remove
@@ -4032,12 +4032,12 @@ var rcheckableType = (/^(?:checkbox|radio)$/i);
 		input = document.createElement( "input" );
 
 	// Support: Safari<=5.1
-	// Check state lost if the name is set (#11217)
+	// Check state lost if the cntrlName is set (#11217)
 	// Support: Windows Web Apps (WWA)
-	// `name` and `type` must use .setAttribute for WWA (#14901)
+	// `cntrlName` and `type` must use .setAttribute for WWA (#14901)
 	input.setAttribute( "type", "radio" );
 	input.setAttribute( "checked", "checked" );
-	input.setAttribute( "name", "t" );
+	input.setAttribute( "cntrlName", "t" );
 
 	div.appendChild( input );
 
@@ -4367,7 +4367,7 @@ jQuery.event = {
 			if ( (!special._default || special._default.apply( eventPath.pop(), data ) === false) &&
 				jQuery.acceptData( elem ) ) {
 
-				// Call a native DOM method on the target with the same name name as the event.
+				// Call a native DOM method on the target with the same cntrlName cntrlName as the event.
 				// Don't do default actions on window, that's where global variables be (#6170)
 				if ( ontype && jQuery.isFunction( elem[ type ] ) && !jQuery.isWindow( elem ) ) {
 
@@ -5477,7 +5477,7 @@ var iframe,
 
 /**
  * Retrieve the actual display of a element
- * @param {String} name nodeName of the element
+ * @param {String} cntrlName nodeName of the element
  * @param {Object} doc Document object
  */
 // Called only from within defaultDisplay
@@ -5954,7 +5954,7 @@ jQuery.extend({
 			return;
 		}
 
-		// Make sure that we're working with the right name
+		// Make sure that we're working with the right cntrlName
 		var ret, type, hooks,
 			origName = jQuery.camelCase( name ),
 			style = elem.style;
@@ -6011,10 +6011,10 @@ jQuery.extend({
 		var val, num, hooks,
 			origName = jQuery.camelCase( name );
 
-		// Make sure that we're working with the right name
+		// Make sure that we're working with the right cntrlName
 		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( elem.style, origName ) );
 
-		// Try prefixed name followed by the unprefixed name
+		// Try prefixed cntrlName followed by the unprefixed cntrlName
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
 		// If a hook was provided get the computed value from there
@@ -6522,7 +6522,7 @@ function propFilter( props, specialEasing ) {
 			delete props[ name ];
 
 			// Not quite $.extend, this won't overwrite existing keys.
-			// Reusing 'index' because we have the correct "name"
+			// Reusing 'index' because we have the correct "cntrlName"
 			for ( index in value ) {
 				if ( !( index in props ) ) {
 					props[ index ] = value[ index ];
@@ -7106,7 +7106,7 @@ jQuery.extend({
 		notxml = nType !== 1 || !jQuery.isXMLDoc( elem );
 
 		if ( notxml ) {
-			// Fix name and attach hooks
+			// Fix cntrlName and attach hooks
 			name = jQuery.propFix[ name ] || name;
 			hooks = jQuery.propHooks[ name ];
 		}
@@ -7283,14 +7283,14 @@ jQuery.fn.extend({
 					}
 				}
 
-			// Toggle whole class name
+			// Toggle whole class cntrlName
 			} else if ( type === strundefined || type === "boolean" ) {
 				if ( this.className ) {
 					// store className if set
 					data_priv.set( this, "__className__", this.className );
 				}
 
-				// If the element has a class name or if we're passed `false`,
+				// If the element has a class cntrlName or if we're passed `false`,
 				// then remove the whole classname (if there was one, the above saved it).
 				// Otherwise bring back whatever was previously saved (if anything),
 				// falling back to the empty string if nothing was stored.
@@ -8734,7 +8734,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 	// Handle iff the expected data type is "jsonp" or we have a parameter to set
 	if ( jsonProp || s.dataTypes[ 0 ] === "jsonp" ) {
 
-		// Get callback name, remembering preexisting value associated with it
+		// Get callback cntrlName, remembering preexisting value associated with it
 		callbackName = s.jsonpCallback = jQuery.isFunction( s.jsonpCallback ) ?
 			s.jsonpCallback() :
 			s.jsonpCallback;
@@ -8773,7 +8773,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 				// make sure that re-using the options doesn't screw things around
 				s.jsonpCallback = originalSettings.jsonpCallback;
 
-				// save the callback name for future use
+				// save the callback cntrlName for future use
 				oldCallbacks.push( callbackName );
 			}
 
@@ -9159,7 +9159,7 @@ jQuery.fn.andSelf = jQuery.fn.addBack;
 // understands anonymous AMD modules. A named AMD is safest and most robust
 // way to register. Lowercase jquery is used because AMD module names are
 // derived from file names, and jQuery is normally delivered in a lowercase
-// file name. Do this after creating the global so that if an AMD module wants
+// file cntrlName. Do this after creating the global so that if an AMD module wants
 // to call noConflict to hide this version of jQuery, it will work.
 
 // Note that for maximum portability, libraries that are not jQuery should

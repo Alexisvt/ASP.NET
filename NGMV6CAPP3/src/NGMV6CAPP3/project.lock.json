@@ -2,7 +2,7 @@
   "locked": false,
   "version": 2,
   "targets": {
-    "DNX,Version=v4.5.1": {
+    "DNX,Version=v4.6": {
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -1414,11 +1414,17 @@
       },
       "System.Numerics.Vectors/4.1.1-beta-23516": {
         "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System.Numerics"
+        ],
         "compile": {
-          "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
+          "ref/net46/_._": {},
+          "ref/net46/System.Numerics.Vectors.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
+          "lib/net46/_._": {},
+          "lib/net46/System.Numerics.Vectors.dll": {}
         }
       },
       "System.Reflection/4.0.0": {
@@ -3636,7 +3642,7 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x86": {
+    "DNX,Version=v4.6/win7-x86": {
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -5051,11 +5057,17 @@
       },
       "System.Numerics.Vectors/4.1.1-beta-23516": {
         "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System.Numerics"
+        ],
         "compile": {
-          "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
+          "ref/net46/_._": {},
+          "ref/net46/System.Numerics.Vectors.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
+          "lib/net46/_._": {},
+          "lib/net46/System.Numerics.Vectors.dll": {}
         }
       },
       "System.Reflection/4.0.0": {
@@ -5174,7 +5186,7 @@
         }
       }
     },
-    "DNX,Version=v4.5.1/win7-x64": {
+    "DNX,Version=v4.6/win7-x64": {
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
         "type": "package",
         "dependencies": {
@@ -6589,11 +6601,17 @@
       },
       "System.Numerics.Vectors/4.1.1-beta-23516": {
         "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System.Numerics"
+        ],
         "compile": {
-          "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
+          "ref/net46/_._": {},
+          "ref/net46/System.Numerics.Vectors.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
+          "lib/net46/_._": {},
+          "lib/net46/System.Numerics.Vectors.dll": {}
         }
       },
       "System.Reflection/4.0.0": {
@@ -16580,7 +16598,7 @@
       "Microsoft.AspNet.Mvc >= 6.0.0-rc1-final",
       "Microsoft.AspNet.Mvc.TagHelpers >= 6.0.0-rc1-final"
     ],
-    "DNX,Version=v4.5.1": [],
+    "DNX,Version=v4.6": [],
     "DNXCore,Version=v5.0": []
   }
 }

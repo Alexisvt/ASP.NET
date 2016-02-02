@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license AngularJS v1.4.8
  * (c) 2010-2015 Google, Inc. http://angularjs.org
  * License: MIT
@@ -7,7 +7,7 @@
 
 /**
  * @ngdoc module
- * @name ngRoute
+ * @cntrlName ngRoute
  * @description
  *
  * # ngRoute
@@ -27,7 +27,7 @@ var ngRouteModule = angular.module('ngRoute', ['ng']).
 
 /**
  * @ngdoc provider
- * @name $routeProvider
+ * @cntrlName $routeProvider
  *
  * @description
  *
@@ -48,20 +48,20 @@ function $RouteProvider() {
 
   /**
    * @ngdoc method
-   * @name $routeProvider#when
+   * @cntrlName $routeProvider#when
    *
    * @param {string} path Route path (matched against `$location.path`). If `$location.path`
    *    contains redundant trailing slash or is missing one, the route will still match and the
    *    `$location.path` will be updated to add or drop the trailing slash to exactly match the
    *    route definition.
    *
-   *    * `path` can contain named groups starting with a colon: e.g. `:name`. All characters up
-   *        to the next slash are matched and stored in `$routeParams` under the given `name`
+   *    * `path` can contain named groups starting with a colon: e.g. `:cntrlName`. All characters up
+   *        to the next slash are matched and stored in `$routeParams` under the given `cntrlName`
    *        when the route matches.
    *    * `path` can contain named groups starting with a colon and ending with a star:
-   *        e.g.`:name*`. All characters are eagerly stored in `$routeParams` under the given `name`
+   *        e.g.`:cntrlName*`. All characters are eagerly stored in `$routeParams` under the given `cntrlName`
    *        when the route matches.
-   *    * `path` can contain optional named groups with a question mark: e.g.`:name?`.
+   *    * `path` can contain optional named groups with a question mark: e.g.`:cntrlName?`.
    *
    *    For example, routes like `/color/:color/largecode/:largecode*\/edit` will match
    *    `/color/brown/largecode/code/with/slashes/edit` and extract:
@@ -76,10 +76,10 @@ function $RouteProvider() {
    *    Object properties:
    *
    *    - `controller` – `{(string|function()=}` – Controller fn that should be associated with
-   *      newly created scope or the name of a {@link angular.Module#controller registered
+   *      newly created scope or the cntrlName of a {@link angular.Module#controller registered
    *      controller} if passed as a string.
-   *    - `controllerAs` – `{string=}` – An identifier name for a reference to the controller.
-   *      If present, the controller will be published to scope under the `controllerAs` name.
+   *    - `controllerAs` – `{string=}` – An identifier cntrlName for a reference to the controller.
+   *      If present, the controller will be published to scope under the `controllerAs` cntrlName.
    *    - `template` – `{string=|function()=}` – html template as a string or a function that
    *      returns an html template as a string which should be used by {@link
    *      ngRoute.directive:ngView ngView} or {@link ng.directive:ngInclude ngInclude} directives.
@@ -108,7 +108,7 @@ function $RouteProvider() {
    *      {@link ngRoute.$route#$routeChangeError $routeChangeError} event is fired. The map object
    *      is:
    *
-   *      - `key` – `{string}`: a name of a dependency to be injected into the controller.
+   *      - `key` – `{string}`: a cntrlName of a dependency to be injected into the controller.
    *      - `factory` - `{string|function}`: If `string` then it is an alias for a service.
    *        Otherwise if function, then it is {@link auto.$injector#invoke injected}
    *        and the return value is treated as the dependency. If the result is a promise, it is
@@ -176,7 +176,7 @@ function $RouteProvider() {
 
   /**
    * @ngdoc property
-   * @name $routeProvider#caseInsensitiveMatch
+   * @cntrlName $routeProvider#caseInsensitiveMatch
    * @description
    *
    * A boolean property indicating if routes defined
@@ -228,7 +228,7 @@ function $RouteProvider() {
 
   /**
    * @ngdoc method
-   * @name $routeProvider#otherwise
+   * @cntrlName $routeProvider#otherwise
    *
    * @description
    * Sets route definition that will be used on route change when no other route definition
@@ -258,7 +258,7 @@ function $RouteProvider() {
 
     /**
      * @ngdoc service
-     * @name $route
+     * @cntrlName $route
      * @requires $location
      * @requires $routeParams
      *
@@ -291,9 +291,9 @@ function $RouteProvider() {
      * This example shows how changing the URL hash causes the `$route` to match a route against the
      * URL, and the `ngView` pulls in the partial.
      *
-     * <example name="$route-service" module="ngRouteExample"
+     * <example cntrlName="$route-service" module="ngRouteExample"
      *          deps="angular-route.js" fixBase="true">
-     *   <file name="index.html">
+     *   <file cntrlName="index.html">
      *     <div ng-controller="MainController">
      *       Choose:
      *       <a href="Book/Moby">Moby</a> |
@@ -309,23 +309,23 @@ function $RouteProvider() {
      *       <pre>$location.path() = {{$location.path()}}</pre>
      *       <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
      *       <pre>$route.current.params = {{$route.current.params}}</pre>
-     *       <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+     *       <pre>$route.current.scope.cntrlName = {{$route.current.scope.cntrlName}}</pre>
      *       <pre>$routeParams = {{$routeParams}}</pre>
      *     </div>
      *   </file>
      *
-     *   <file name="book.html">
-     *     controller: {{name}}<br />
+     *   <file cntrlName="book.html">
+     *     controller: {{cntrlName}}<br />
      *     Book Id: {{params.bookId}}<br />
      *   </file>
      *
-     *   <file name="chapter.html">
-     *     controller: {{name}}<br />
+     *   <file cntrlName="chapter.html">
+     *     controller: {{cntrlName}}<br />
      *     Book Id: {{params.bookId}}<br />
      *     Chapter Id: {{params.chapterId}}
      *   </file>
      *
-     *   <file name="script.js">
+     *   <file cntrlName="script.js">
      *     angular.module('ngRouteExample', ['ngRoute'])
      *
      *      .controller('MainController', function($scope, $route, $routeParams, $location) {
@@ -335,12 +335,12 @@ function $RouteProvider() {
      *      })
      *
      *      .controller('BookController', function($scope, $routeParams) {
-     *          $scope.name = "BookController";
+     *          $scope.cntrlName = "BookController";
      *          $scope.params = $routeParams;
      *      })
      *
      *      .controller('ChapterController', function($scope, $routeParams) {
-     *          $scope.name = "ChapterController";
+     *          $scope.cntrlName = "ChapterController";
      *          $scope.params = $routeParams;
      *      })
      *
@@ -369,7 +369,7 @@ function $RouteProvider() {
      *
      *   </file>
      *
-     *   <file name="protractor.js" type="protractor">
+     *   <file cntrlName="protractor.js" type="protractor">
      *     it('should load and compile correct template', function() {
      *       element(by.linkText('Moby: Ch1')).click();
      *       var content = element(by.css('[ng-view]')).getText();
@@ -389,7 +389,7 @@ function $RouteProvider() {
 
     /**
      * @ngdoc event
-     * @name $route#$routeChangeStart
+     * @cntrlName $route#$routeChangeStart
      * @eventType broadcast on root scope
      * @description
      * Broadcasted before a route change. At this  point the route services starts
@@ -409,7 +409,7 @@ function $RouteProvider() {
 
     /**
      * @ngdoc event
-     * @name $route#$routeChangeSuccess
+     * @cntrlName $route#$routeChangeSuccess
      * @eventType broadcast on root scope
      * @description
      * Broadcasted after a route change has happened successfully.
@@ -426,7 +426,7 @@ function $RouteProvider() {
 
     /**
      * @ngdoc event
-     * @name $route#$routeChangeError
+     * @cntrlName $route#$routeChangeError
      * @eventType broadcast on root scope
      * @description
      * Broadcasted if any of the resolve promises are rejected.
@@ -439,7 +439,7 @@ function $RouteProvider() {
 
     /**
      * @ngdoc event
-     * @name $route#$routeUpdate
+     * @cntrlName $route#$routeUpdate
      * @eventType broadcast on root scope
      * @description
      * The `reloadOnSearch` property has been set to false, and we are reusing the same
@@ -457,7 +457,7 @@ function $RouteProvider() {
 
           /**
            * @ngdoc method
-           * @name $route#reload
+           * @cntrlName $route#reload
            *
            * @description
            * Causes `$route` service to reload the current route even if
@@ -477,7 +477,7 @@ function $RouteProvider() {
 
           /**
            * @ngdoc method
-           * @name $route#updateParams
+           * @cntrlName $route#updateParams
            *
            * @description
            * Causes `$route` service to update the current URL, replacing
@@ -671,7 +671,7 @@ ngRouteModule.provider('$routeParams', $RouteParamsProvider);
 
 /**
  * @ngdoc service
- * @name $routeParams
+ * @cntrlName $routeParams
  * @requires $route
  *
  * @description
@@ -683,7 +683,7 @@ ngRouteModule.provider('$routeParams', $RouteParamsProvider);
  * {@link ng.$location#search `search()`} and {@link ng.$location#path `path()`}.
  * The `path` parameters are extracted when the {@link ngRoute.$route `$route`} path is matched.
  *
- * In case of parameter name collision, `path` params take precedence over `search` params.
+ * In case of parameter cntrlName collision, `path` params take precedence over `search` params.
  *
  * The service guarantees that the identity of the `$routeParams` object will remain unchanged
  * (but its properties will likely change) even when a route change occurs.
@@ -712,7 +712,7 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
 
 /**
  * @ngdoc directive
- * @name ngView
+ * @cntrlName ngView
  * @restrict ECA
  *
  * @description
@@ -742,10 +742,10 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
  *                  - Otherwise enable scrolling only if the `autoscroll` attribute value evaluated
  *                    as an expression yields a truthy value.
  * @example
-    <example name="ngView-directive" module="ngViewExample"
+    <example cntrlName="ngView-directive" module="ngViewExample"
              deps="angular-route.js;angular-animate.js"
              animations="true" fixBase="true">
-      <file name="index.html">
+      <file cntrlName="index.html">
         <div ng-controller="MainCtrl as main">
           Choose:
           <a href="Book/Moby">Moby</a> |
@@ -766,22 +766,22 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
         </div>
       </file>
 
-      <file name="book.html">
+      <file cntrlName="book.html">
         <div>
-          controller: {{book.name}}<br />
+          controller: {{book.cntrlName}}<br />
           Book Id: {{book.params.bookId}}<br />
         </div>
       </file>
 
-      <file name="chapter.html">
+      <file cntrlName="chapter.html">
         <div>
-          controller: {{chapter.name}}<br />
+          controller: {{chapter.cntrlName}}<br />
           Book Id: {{chapter.params.bookId}}<br />
           Chapter Id: {{chapter.params.chapterId}}
         </div>
       </file>
 
-      <file name="animations.css">
+      <file cntrlName="animations.css">
         .view-animate-container {
           position:relative;
           height:100px!important;
@@ -821,7 +821,7 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
         }
       </file>
 
-      <file name="script.js">
+      <file cntrlName="script.js">
         angular.module('ngViewExample', ['ngRoute', 'ngAnimate'])
           .config(['$routeProvider', '$locationProvider',
             function($routeProvider, $locationProvider) {
@@ -846,17 +846,17 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
               this.$routeParams = $routeParams;
           }])
           .controller('BookCtrl', ['$routeParams', function($routeParams) {
-            this.name = "BookCtrl";
+            this.cntrlName = "BookCtrl";
             this.params = $routeParams;
           }])
           .controller('ChapterCtrl', ['$routeParams', function($routeParams) {
-            this.name = "ChapterCtrl";
+            this.cntrlName = "ChapterCtrl";
             this.params = $routeParams;
           }]);
 
       </file>
 
-      <file name="protractor.js" type="protractor">
+      <file cntrlName="protractor.js" type="protractor">
         it('should load and compile correct template', function() {
           element(by.linkText('Moby: Ch1')).click();
           var content = element(by.css('[ng-view]')).getText();
@@ -877,7 +877,7 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
 
 /**
  * @ngdoc event
- * @name ngView#$viewContentLoaded
+ * @cntrlName ngView#$viewContentLoaded
  * @eventType emit on the current ngView scope
  * @description
  * Emitted every time the ngView content is reloaded.

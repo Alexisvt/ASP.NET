@@ -247,7 +247,7 @@ jQuery.extend({
 			return;
 		}
 
-		// Make sure that we're working with the right name
+		// Make sure that we're working with the right cntrlName
 		var ret, type, hooks,
 			origName = jQuery.camelCase( name ),
 			style = elem.style;
@@ -304,10 +304,10 @@ jQuery.extend({
 		var val, num, hooks,
 			origName = jQuery.camelCase( name );
 
-		// Make sure that we're working with the right name
+		// Make sure that we're working with the right cntrlName
 		name = jQuery.cssProps[ origName ] || ( jQuery.cssProps[ origName ] = vendorPropName( elem.style, origName ) );
 
-		// Try prefixed name followed by the unprefixed name
+		// Try prefixed cntrlName followed by the unprefixed cntrlName
 		hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
 
 		// If a hook was provided get the computed value from there

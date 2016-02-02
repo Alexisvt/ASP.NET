@@ -8,12 +8,12 @@ define([
 		input = document.createElement( "input" );
 
 	// Support: Safari<=5.1
-	// Check state lost if the name is set (#11217)
+	// Check state lost if the cntrlName is set (#11217)
 	// Support: Windows Web Apps (WWA)
-	// `name` and `type` must use .setAttribute for WWA (#14901)
+	// `cntrlName` and `type` must use .setAttribute for WWA (#14901)
 	input.setAttribute( "type", "radio" );
 	input.setAttribute( "checked", "checked" );
-	input.setAttribute( "name", "t" );
+	input.setAttribute( "cntrlName", "t" );
 
 	div.appendChild( input );
 

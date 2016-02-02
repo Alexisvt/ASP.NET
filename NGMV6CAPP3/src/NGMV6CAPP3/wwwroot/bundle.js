@@ -19,6 +19,11 @@
             controller: "app.Controllers.SitesCtrl",
             controllerAs: "vm"
         })
+            .when("/types", {
+            templateUrl: "views/types.html",
+            controller: app.Controllers.TypeCntrl.cntrlName,
+            controllerAs: "vm"
+        })
             .otherwise({
             templateUrl: "views/main.html",
             controller: "app.Controllers.MainCtrl",
@@ -105,35 +110,21 @@ var app;
 //# sourceMappingURL=SitesCtrl.js.map
 var app;
 (function (app) {
-    var services;
-    (function (services) {
-        var CurrentSpot = (function () {
-            function CurrentSpot() {
-                this.activeMenuId = "";
-                this.titleText = "";
+    var Controllers;
+    (function (Controllers) {
+        var TypeCntrl = (function () {
+            function TypeCntrl() {
             }
-            CurrentSpot.prototype.setCurrentSpot = function (menuId, title) {
-                this.activeMenuId = menuId;
-                this.titleText = title;
-            };
-            CurrentSpot.prototype.getActiveMenu = function () {
-                return this.activeMenuId;
-            };
-            CurrentSpot.prototype.getTitle = function () {
-                return this.titleText;
-            };
-            return CurrentSpot;
+            TypeCntrl.cntrlRegisName = "app.Controllers.TypeCtrl";
+            return TypeCntrl;
         })();
-        services.CurrentSpot = CurrentSpot;
-        function factory() {
-            return new CurrentSpot();
-        }
+        Controllers.TypeCntrl = TypeCntrl;
         angular
             .module("maintenance")
-            .service("app.services.CurrentSpot", CurrentSpot);
-    })(services = app.services || (app.services = {}));
+            .controller("app.Controllers.TypeCtrl", TypeCntrl);
+    })(Controllers = app.Controllers || (app.Controllers = {}));
 })(app || (app = {}));
-//# sourceMappingURL=CurrentSpot.js.map
+//# sourceMappingURL=TypesCtrl.js.map
 var app;
 (function (app) {
     var Directive;
@@ -218,3 +209,50 @@ var app;
     })(Directive = app.Directive || (app.Directive = {}));
 })(app || (app = {}));
 //# sourceMappingURL=ywMenuId.js.map
+var app;
+(function (app) {
+    var Core;
+    (function (Core) {
+        angular.module("core", []);
+    })(Core = app.Core || (app.Core = {}));
+})(app || (app = {}));
+//# sourceMappingURL=Core.js.map
+var app;
+(function (app) {
+    var Main;
+    (function (Main) {
+        angular.module("main", ["ngRoute", "core", "maintenance"]);
+    })(Main = app.Main || (app.Main = {}));
+})(app || (app = {}));
+//# sourceMappingURL=Main.js.map
+var app;
+(function (app) {
+    var services;
+    (function (services) {
+        var CurrentSpot = (function () {
+            function CurrentSpot() {
+                this.activeMenuId = "";
+                this.titleText = "";
+            }
+            CurrentSpot.prototype.setCurrentSpot = function (menuId, title) {
+                this.activeMenuId = menuId;
+                this.titleText = title;
+            };
+            CurrentSpot.prototype.getActiveMenu = function () {
+                return this.activeMenuId;
+            };
+            CurrentSpot.prototype.getTitle = function () {
+                return this.titleText;
+            };
+            return CurrentSpot;
+        })();
+        services.CurrentSpot = CurrentSpot;
+        function factory() {
+            return new CurrentSpot();
+        }
+        angular
+            .module("maintenance")
+            .service("app.services.CurrentSpot", CurrentSpot);
+    })(services = app.services || (app.services = {}));
+})(app || (app = {}));
+//# sourceMappingURL=CurrentSpot.js.map

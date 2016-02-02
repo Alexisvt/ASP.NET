@@ -120,7 +120,7 @@ module.exports = function (grunt) {
           'js/tab.js',
           'js/affix.js'
         ],
-        dest: 'dist/js/<%= pkg.name %>.js'
+        dest: 'dist/js/<%= pkg.cntrlName %>.js'
       }
     },
 
@@ -134,7 +134,7 @@ module.exports = function (grunt) {
       },
       core: {
         src: '<%= concat.bootstrap.dest %>',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
+        dest: 'dist/js/<%= pkg.cntrlName %>.min.js'
       },
       customize: {
         src: configBridge.paths.customizerJs,
@@ -159,22 +159,22 @@ module.exports = function (grunt) {
           strictMath: true,
           sourceMap: true,
           outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+          sourceMapURL: '<%= pkg.cntrlName %>.css.map',
+          sourceMapFilename: 'dist/css/<%= pkg.cntrlName %>.css.map'
         },
         src: 'less/bootstrap.less',
-        dest: 'dist/css/<%= pkg.name %>.css'
+        dest: 'dist/css/<%= pkg.cntrlName %>.css'
       },
       compileTheme: {
         options: {
           strictMath: true,
           sourceMap: true,
           outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>-theme.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>-theme.css.map'
+          sourceMapURL: '<%= pkg.cntrlName %>-theme.css.map',
+          sourceMapFilename: 'dist/css/<%= pkg.cntrlName %>-theme.css.map'
         },
         src: 'less/theme.less',
-        dest: 'dist/css/<%= pkg.name %>-theme.css'
+        dest: 'dist/css/<%= pkg.cntrlName %>-theme.css'
       }
     },
 
@@ -186,13 +186,13 @@ module.exports = function (grunt) {
         options: {
           map: true
         },
-        src: 'dist/css/<%= pkg.name %>.css'
+        src: 'dist/css/<%= pkg.cntrlName %>.css'
       },
       theme: {
         options: {
           map: true
         },
-        src: 'dist/css/<%= pkg.name %>-theme.css'
+        src: 'dist/css/<%= pkg.cntrlName %>-theme.css'
       },
       docs: {
         src: ['docs/assets/css/src/docs.css']
@@ -235,12 +235,12 @@ module.exports = function (grunt) {
         advanced: false
       },
       minifyCore: {
-        src: 'dist/css/<%= pkg.name %>.css',
-        dest: 'dist/css/<%= pkg.name %>.min.css'
+        src: 'dist/css/<%= pkg.cntrlName %>.css',
+        dest: 'dist/css/<%= pkg.cntrlName %>.min.css'
       },
       minifyTheme: {
-        src: 'dist/css/<%= pkg.name %>-theme.css',
-        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
+        src: 'dist/css/<%= pkg.cntrlName %>-theme.css',
+        dest: 'dist/css/<%= pkg.cntrlName %>-theme.min.css'
       },
       docs: {
         src: [

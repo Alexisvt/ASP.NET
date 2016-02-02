@@ -15,6 +15,11 @@
             controller: "app.Controllers.SitesCtrl",
             controllerAs: "vm"
         })
+            .when("/types", {
+            templateUrl: "views/types.html",
+            controller: app.Controllers.TypeCntrl.cntrlRegisName,
+            controllerAs: "vm"
+        })
             .otherwise({
             templateUrl: "views/main.html",
             controller: "app.Controllers.MainCtrl",
