@@ -9,13 +9,13 @@ namespace coreapp
     {
       WriteLine("Hello World!");
 
-      NumerosRecursivos(0);
+      NumerosRecursivos();
 
       ReadKey();
 
     }
 
-    private static void NumerosRecursivos(int n)
+    private static void NumerosRecursivos(int n = 0)
     {
       if (n <= 100)
       {
