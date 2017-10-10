@@ -1,0 +1,33 @@
+﻿@model List<WebAgenda.Models.ContactAgendaViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<div>
+    <h1>List of contacts in the agenda</h1>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Phone</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ContactName</td>
+                <td>@item.PhoneNumber</td>
+            </tr>
+        }
+    </table>
+
+</div>
+</body>
+</html>
