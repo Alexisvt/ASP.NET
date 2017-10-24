@@ -13,7 +13,37 @@ namespace _2azInternet.Controllers
         public ActionResult Random()
         {
             var movie = new Movie { Name = "Shrek!"};
-            return View(movie);
+            //return View(movie);
+            //return Content("Hola mundo");
+            //return HttpNotFound();
+            //return new EmptyResult();
+            return RedirectToAction("Index", "Home", new {page = 1, sortBy = "name"});
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return Content($"id={id}");
+        }
+
+        public ActionResult Index(int? pageIndex, string sortBy)
+        {
+            if (!pageIndex.HasValue)
+            {
+                pageIndex = 1;
+            }
+
+            if (string.IsNullOrEmpty(sortBy))
+            {
+                sortBy = "name";
+            }
+
+            return Content($"pageIndex={pageIndex}&sortby={sortBy}");
+        }
+
+        [Route(@"movies/released/{year}/{month:regex(\d{2}):range(1, 12)}")]
+        public ActionResult ByReleaseDate(int year, short month)
+        {
+            return Content($"year={year}&month={month}");
         }
     }
 }
