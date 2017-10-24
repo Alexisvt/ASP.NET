@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Models\Movie.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Controllers\MoviesController.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Movies\Random.cshtml</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>
