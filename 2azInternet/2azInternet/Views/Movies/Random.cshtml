@@ -1,8 +1,27 @@
-﻿@model _2azInternet.Models.Movie
+﻿@model _2azInternet.ViewModels.RandomMovieViewModel
 @{
     ViewBag.Title = "Random";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Shrek!</h2>
+@*<h2>@((ViewData["Movie"] as Movie)?.Name) </h2>
+<p>Again the title of the movie is: @((ViewBag.Movie as Movie)?.Name)</p>*@
+@{
+    var className = Model.Customers.Count > 5 ? "popular" : null;
+}
+<h2 class="@className">@Model.Movie.Name</h2>
 
+@if (!Model.Customers.Any())
+{
+    <p>No one has rented this movie before.</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+    

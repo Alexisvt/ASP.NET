@@ -2,13 +2,19 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Models\Movie.cs</string>
+      <string>c:\asp.net\2azinternet\2azinternet\models\movie.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Controllers\MoviesController.cs</string>
+      <string>c:\asp.net\2azinternet\2azinternet\controllers\moviescontroller.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Movies\Random.cshtml</string>
+      <string>c:\asp.net\2azinternet\2azinternet\app_start\bundleconfig.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>c:\asp.net\2azinternet\2azinternet\app_start\routeconfig.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>c:\asp.net\2azinternet\2azinternet\views\movies\random.cshtml</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
