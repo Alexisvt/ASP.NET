@@ -35,7 +35,7 @@ namespace _2azInternet.Controllers
         [Route("customers/details/{customerId}")]
         public ActionResult Details(int customerId)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == customerId);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == customerId);
 
             if (customer == default(Customer))
             {
