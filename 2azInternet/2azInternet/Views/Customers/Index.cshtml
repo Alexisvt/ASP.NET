@@ -1,4 +1,4 @@
-﻿@model _2azInternet.ViewModels.CustomerViewModel
+﻿@model IEnumerable<_2azInternet.Models.Customer>
 
 @{
     ViewBag.Title = "Customers";
@@ -6,7 +6,7 @@
 }
 
 <h2>Customers</h2>
-@if (Model.Customers.Any())
+@if (Model.Any())
 {
     <table class="table">
         <thead>
@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var customer in Model.Customers)
+            @foreach (var customer in Model)
             {
                 <tr>
                     <td>@Html.ActionLink(customer.Name, "Details", new {customerId = customer.Id})</td>

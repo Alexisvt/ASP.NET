@@ -10,39 +10,31 @@ namespace _2azInternet.Controllers
 {
     public class CustomersController : Controller
     {
-        private readonly List<Customer> _customers;
+        private readonly ApplicationDbContext _context;
 
         public CustomersController()
         {
-            _customers = new List<Customer>
-            {
-                new Customer
-                {
-                    Id = 1,
-                    Name = "Alexis"
-                },
-                new Customer
-                {
-                    Id = 2,
-                    Name = "David"
-                }
-            };
+            _context = ApplicationDbContext.Create();
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+            base.Dispose(disposing);
+        }
+
         // GET: Customer
         public ActionResult Index()
         {
-            var vm = new CustomerViewModel
-            {
-                Customers = _customers
-            };
+            var customers = _context.Customers.ToList();
 
-            return View(vm);
+            return View(customers);
         }
 
         [Route("customers/details/{customerId}")]
         public ActionResult Details(int customerId)
         {
-            var customer = _customers.FirstOrDefault(c => c.Id == customerId);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == customerId);
 
             if (customer == default(Customer))
             {
