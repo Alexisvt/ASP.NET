@@ -243,6 +243,10 @@
     <Compile Include="Migrations\201710292241422_AddBirthdatePropToCustomerDC.Designer.cs">
       <DependentUpon>201710292241422_AddBirthdatePropToCustomerDC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710292245509_AddBirthdatePropToCustomerDC1.cs" />
+    <Compile Include="Migrations\201710292245509_AddBirthdatePropToCustomerDC1.Designer.cs">
+      <DependentUpon>201710292245509_AddBirthdatePropToCustomerDC1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -356,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710292241422_AddBirthdatePropToCustomerDC.resx">
       <DependentUpon>201710292241422_AddBirthdatePropToCustomerDC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710292245509_AddBirthdatePropToCustomerDC1.resx">
+      <DependentUpon>201710292245509_AddBirthdatePropToCustomerDC1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
