@@ -1,0 +1,30 @@
+﻿@model _2azInternet.ViewModels.CustomerViewModel
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@if (Model.Customers.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Customers</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td>@Html.ActionLink(customer.Name, "Details", new {customerId = customer.Id})</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>There is no customers yet</p>
+}

@@ -11,27 +11,24 @@ namespace _2azInternet.Controllers
     public class MoviesController : Controller
     {
        
-        public ActionResult Random()
+        public ActionResult Index()
         {
-            var movie = new Movie {Name = "Shrek"};
-
-            var customers = new List<Customer>
+            var vm = new MovieViewModel
             {
-                new Customer
+                Movies = new List<Movie>
                 {
-                    Name = "Customer 1"
-                },
-                new Customer
-                {
-                    Name = "Customer 2"
+                    new Movie
+                    {
+                        Name = "Movie 1"
+                    },
+                    new Movie
+                    {
+                        Name = "Movie 2"
+                    }
                 }
             };
 
-            RandomMovieViewModel vm = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
+            vm = new MovieViewModel();
 
             return View(vm);
         }
