@@ -8,7 +8,7 @@ using _2azInternet.Models;
 
 namespace _2azInternet.ViewModels
 {
-    public class NewCustomerViewModel
+    public class CustomerFormViewModel
     {
         public IEnumerable<MembershipType> MembershipTypes { get; set; }
         public Customer Customer { get; set; }
