@@ -44,5 +44,15 @@ namespace _2azInternet.Controllers
 
             return View(customer);
         }
+
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

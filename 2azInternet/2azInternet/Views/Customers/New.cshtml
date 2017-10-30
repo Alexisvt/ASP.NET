@@ -1,0 +1,25 @@
+﻿@model _2azInternet.Models.Customer
+
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+
+@using (Html.BeginForm("Create", "Customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c=> c.Name)
+        @Html.TextBoxFor(customer => customer.Name, new {@class="form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c=> c.Birthdate)
+        @Html.TextBoxFor(customer => customer.Birthdate, new {@class="form-control", type="date"})
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(customer => customer.IsSubscribedToNewsletter) Subscribed to Newsletter?
+        </label>
+    </div>
+}

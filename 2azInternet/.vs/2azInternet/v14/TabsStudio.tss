@@ -5,39 +5,19 @@
       <string>c:\asp.net\2azinternet\2azinternet\models\movie.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>c:\asp.net\2azinternet\2azinternet\app_start\bundleconfig.cs</string>
+      <string>c:\asp.net\2azinternet\2azinternet\models\customer.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>c:\asp.net\2azinternet\2azinternet\app_start\routeconfig.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Controllers\CustomersController.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Movies\Index.cshtml</string>
+      <string>c:\asp.net\2azinternet\2azinternet\models\identitymodels.cs</string>
     </ArrayOfString>
     <ArrayOfString>
       <string>C:\ASP.NET\2azInternet\2azInternet\Controllers\MoviesController.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\ViewModels\MovieViewModel.cs</string>
+      <string>c:\asp.net\2azinternet\2azinternet\views\movies\details.cshtml</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\ViewModels\CustomerViewModel.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Customers\Details.cshtml</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Shared\_Layout.cshtml</string>
-    </ArrayOfString>
-  </ArrayOfArrayOfString>
-  <ArrayOfArrayOfString>
-    <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Shared\_NavBar.cshtml</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Customers\Index.cshtml</string>
+      <string>Your ASP.NET application</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
