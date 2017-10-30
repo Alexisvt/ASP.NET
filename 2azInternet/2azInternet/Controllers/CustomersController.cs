@@ -48,12 +48,19 @@ namespace _2azInternet.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            return View();
+            var vm = new NewCustomerViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View(vm);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(NewCustomerViewModel viewModel)
         {
-            throw new NotImplementedException();
+            _context.Customers.Add(viewModel.Customer);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Customers");
         }
     }
 }
