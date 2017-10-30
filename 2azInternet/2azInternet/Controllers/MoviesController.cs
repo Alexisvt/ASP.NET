@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,27 +11,32 @@ namespace _2azInternet.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
        
         public ActionResult Index()
         {
-            var vm = new MovieViewModel
+
+            var movies = _context.Movies.Include(m => m.Genre);
+
+            return View(movies);
+        }
+
+        [Route("movies/details/{movieId}")]
+        public ActionResult Details(int movieId)
+        {
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == movieId);
+
+            if (movie == null)
             {
-                Movies = new List<Movie>
-                {
-                    new Movie
-                    {
-                        Name = "Movie 1"
-                    },
-                    new Movie
-                    {
-                        Name = "Movie 2"
-                    }
-                }
-            };
+                return HttpNotFound();
+            }
 
-            vm = new MovieViewModel();
-
-            return View(vm);
+            return View(movie);
         }
     }
 }
