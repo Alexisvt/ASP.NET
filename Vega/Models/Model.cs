@@ -10,5 +10,9 @@ namespace Vega.Models
     [Required]
     [Display(Name = "name")]
     public string Name { get; set; }
+
+    public int MakeId { get; set; }
+
+    public Make Make { get; set; }
   }
 }
