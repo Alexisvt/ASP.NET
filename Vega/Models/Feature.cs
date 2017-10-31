@@ -9,6 +9,7 @@ namespace Vega.Models
 
     [Required]
     [Display(Name = "name")]
+    [StringLength(255)]
     public string Name { get; set; }
   }
 }
