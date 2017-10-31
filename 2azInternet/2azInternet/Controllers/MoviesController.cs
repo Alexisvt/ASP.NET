@@ -38,5 +38,47 @@ namespace _2azInternet.Controllers
 
             return View(movie);
         }
+
+        public ActionResult Edit(int movieId)
+        {
+            var vm = new MovieFormViewModel
+            {
+                Movie = _context.Movies.Single(movie => movie.Id == movieId),
+                Genres = _context.Genres
+            };
+
+            return View("MovieForm", vm);
+        }
+
+        public ActionResult Save(MovieFormViewModel formViewModel)
+        {
+            // if the movie is new then save it
+            if (formViewModel.Movie.Id == 0)
+            {
+                formViewModel.Movie.DateAdded = DateTime.Now;
+                _context.Movies.Add(formViewModel.Movie);
+            }
+            else
+            {
+                var movieInDb = _context.Movies.Single(movie => movie.Id == formViewModel.Movie.Id);
+
+                movieInDb.Name = formViewModel.Movie.Name;
+                movieInDb.GenreId = formViewModel.Movie.GenreId;
+                movieInDb.NumberInStock = formViewModel.Movie.NumberInStock;
+                movieInDb.ReleaseDate = formViewModel.Movie.ReleaseDate;
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult New()
+        {
+            var vm = new MovieFormViewModel
+            {
+                Genres = _context.Genres.ToList()
+            };
+            return View("MovieForm", vm);
+        }
     }
 }

@@ -7,13 +7,9 @@ using _2azInternet.Models;
 
 namespace _2azInternet.ViewModels
 {
-    public class MovieViewModel
+    public class MovieFormViewModel
     {
-        public List<Movie> Movies { get; set; }
-
-        public MovieViewModel()
-        {
-            Movies = new List<Movie>();
-        }
+        public IEnumerable<Genre> Genres { get; set; }
+        public Movie Movie { get; set; }
     }
 }

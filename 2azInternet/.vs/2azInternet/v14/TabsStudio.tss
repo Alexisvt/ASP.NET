@@ -2,22 +2,33 @@
 <ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ArrayOfArrayOfString>
     <ArrayOfString>
-      <string>c:\asp.net\2azinternet\2azinternet\models\movie.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>c:\asp.net\2azinternet\2azinternet\models\customer.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
-      <string>c:\asp.net\2azinternet\2azinternet\models\identitymodels.cs</string>
-    </ArrayOfString>
-    <ArrayOfString>
       <string>C:\ASP.NET\2azInternet\2azInternet\Controllers\MoviesController.cs</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>c:\asp.net\2azinternet\2azinternet\views\movies\details.cshtml</string>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Movies\Index.cshtml</string>
     </ArrayOfString>
     <ArrayOfString>
-      <string>Your ASP.NET application</string>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Movies\MovieForm.cshtml</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\ViewModels\MovieFormViewModel.cs</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Controllers\CustomersController.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\ViewModels\CustomerFormViewModel.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Models\Movie.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Customers\CustomerForm.cshtml</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\ASP.NET\2azInternet\2azInternet\Views\Customers\Index.cshtml</string>
     </ArrayOfString>
   </ArrayOfArrayOfString>
 </ArrayOfArrayOfArrayOfString>
