@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Vega.Controllers.Resources;
 using Vega.Models;
 
 namespace Vega.Controllers
@@ -9,9 +11,11 @@ namespace Vega.Controllers
   public class MakesController : Controller
   {
     private readonly VegaDbContext _context;
+    private readonly IMapper mapper;
 
-    public MakesController(VegaDbContext context)
+    public MakesController(VegaDbContext context, IMapper mapper)
     {
+      this.mapper = mapper;
       _context = context;
     }
 
@@ -20,15 +24,8 @@ namespace Vega.Controllers
     {
       var makes = _context.Makes.Include(m => m.Models).ToList();
 
-      return Ok(makes);
+      return Ok(mapper.Map<List<Make>, List<MakeResource>>(makes));
     }
 
-    [HttpGet("/api/features")]
-    public IActionResult GetFeatures()
-    {
-      var features = _context.Features.ToList();
-
-      return Ok(features);
-    }
   }
 }
