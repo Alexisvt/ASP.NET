@@ -6,11 +6,11 @@ using Vega.Models;
 
 namespace Vega.Controllers
 {
-  public class MakeController : Controller
+  public class MakesController : Controller
   {
     private readonly VegaDbContext _context;
 
-    public MakeController(VegaDbContext context)
+    public MakesController(VegaDbContext context)
     {
       _context = context;
     }
